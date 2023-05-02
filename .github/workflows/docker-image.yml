@@ -21,6 +21,10 @@ jobs:
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
+        
+      - 
+        name: Setting current date as env variable
+        run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')"
       -
         name: Build and push
         uses: docker/build-push-action@v3
@@ -28,4 +32,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_REPO }}:${{date +'%Y-%m-%dT%H:%M:%S'}}"
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_REPO }}:$NOW
