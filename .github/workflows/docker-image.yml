@@ -1,4 +1,4 @@
-name: ci
+name: Docker Image CI to Docker HUB
 
 on:
   push:
@@ -28,4 +28,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/blogpost:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_REPO }}:$(date +%s)
